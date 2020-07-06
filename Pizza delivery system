@@ -1,0 +1,196 @@
+import java.util.*;
+
+
+ class Main
+ {
+   public static void main(String args[])
+   { 
+    
+
+        
+        int ctr = 0;
+        int dPrice = 0, crustc = 0;
+        double dDiscount, dSCharge = 0, dDelivery = 0, dSub, dOrderCost, dVat, dTotalCost, dTotal = 0, dOver = 0;
+        
+            Scanner sc = new Scanner(System.in);
+            String ask;
+           
+            while(true)
+            {
+                
+                System.out.print("\n\nCommand: ");
+                ask = sc.nextLine();
+                
+            if(ask.equals("help"))
+            {
+                System.out.print("\n\nCommands Available: \norder - To start order \ntotal - to get overall sales\nstop - to stop operation");
+                
+            }
+            if(ask.equals("order"))
+            {
+            
+            System.out.println("\t\t\tWelcome to Neeraj's Pizza Parlour");
+            System.out.print("\t\t\t     The home of good pizza");
+            
+            System.out.print("\n\n\t\t\t       Order Information");
+            System.out.print("\n\nEnter your name: ");
+            String name = sc.nextLine();
+            
+            System.out.print("\nAddress: ");
+            String address = sc.nextLine();
+            
+            System.out.print("\n1. Regular | 2. PWD / Senior ");
+            System.out.print("\nCustomer Type: ");
+            int customertype = sc.nextInt();
+            while(customertype!=1&&customertype!=2){
+                System.out.println("sorry your entered input is incorrect enter again ");
+                customertype=sc.nextInt();
+                if(customertype==1||customertype==2){
+                    break;
+                }
+            }
+            
+            System.out.print("\n1. Dine-In | 2. Delivery | 3.Fast Delivery within 1 hour");
+            System.out.print("\nType of Order: ");
+            int typeoforder = sc.nextInt();
+               while(typeoforder!=1&&typeoforder!=2&&typeoforder!=3){
+                System.out.println("sorry your entered input is incorrect enter again ");
+                typeoforder=sc.nextInt();
+                if(typeoforder==1||typeoforder==2||typeoforder==3){
+                    break;
+                }
+            }
+            
+            System.out.print("\n1. Small | 2. Medium | 3. Large");
+            System.out.print("\nPizza Size: ");
+            int pizzasize = sc.nextInt();
+              while(pizzasize!=1&&pizzasize!=2&&pizzasize!=3){
+                System.out.println("sorry your entered input is incorrect enter again ");
+               pizzasize=sc.nextInt();
+                if(pizzasize==1||pizzasize==2||pizzasize==3){
+                    break;
+                }
+            }
+            
+            System.out.print("\n1. Ham & Cheese | 2. Hawiian Delight | 3. Pepperoni");
+            System.out.print("\nPizza Flavor: ");
+            int pizzaflavor = sc.nextInt();
+             while(pizzaflavor!=1&&pizzaflavor!=2&&pizzaflavor!=3){
+                System.out.println("sorry your entered input is incorrect enter again ");
+               pizzaflavor=sc.nextInt();
+                if(pizzaflavor==1||pizzaflavor==2||pizzaflavor==3){
+                    break;
+                }
+            }
+            
+            System.out.print("\n1. Thin | 2. Thick");
+            System.out.print("\nCrust: ");
+            int pizzacrust = sc.nextInt();
+            while(pizzacrust!=1&&pizzacrust!=2){
+                System.out.println("sorry your entered input is incorrect enter again ");
+               pizzacrust=sc.nextInt();
+                if(pizzacrust==1||pizzacrust==2){
+                    break;
+                }
+            }
+            
+            System.out.print("\nQuantity: ");
+            int dQuantity = sc.nextInt();
+            if(customertype == 1)
+            {
+               dDiscount = 0.0;
+            }
+            else
+            {
+               dDiscount = 0.20;
+            }
+            if(typeoforder == 1)
+            {
+               dSCharge = 0.10;
+               dDelivery = 0.0;
+            }
+            if(typeoforder == 2)
+            {
+               dSCharge = 0.0;
+               dDelivery = 0.0;
+            }
+            if(typeoforder == 3)
+            {
+               dSCharge = 0.0;
+               dDelivery = 100.0;
+            }
+            if(pizzacrust == 1)
+            {
+                crustc = 10;
+            }
+            else if(pizzacrust == 2)
+            {
+                crustc = 0;
+            }
+            
+            if(pizzasize == 1 && pizzaflavor == 1)
+            {dPrice= 70;}
+            if(pizzasize==1 && pizzaflavor==2)
+            {dPrice= 90;}
+            if(pizzasize==1 && pizzaflavor==3)
+            {dPrice= 100;}
+            if(pizzasize==2 && pizzaflavor==1)
+            {dPrice= 80;}
+            if(pizzasize==2 && pizzaflavor==2)
+            {dPrice= 100;}
+            if(pizzasize==2 && pizzaflavor==3)
+            {dPrice= 120;}
+            if(pizzasize==3 && pizzaflavor==1)
+            {dPrice= 100;}
+            if(pizzasize==3 && pizzaflavor==2)
+            {dPrice= 120;}
+            if(pizzasize==3 && pizzaflavor==3)
+            {dPrice= 150;}
+        
+           dSub = dQuantity * dPrice;
+           dOrderCost = dSub + dDelivery + dSCharge;
+           dVat = dSub * 0.12;
+           dTotalCost = dSub + dOrderCost + dVat + crustc - dDiscount;
+           dTotal = dTotalCost;
+           dOver =  dOver + dTotal;
+            
+            ctr = ctr + 1;
+            System.out.printf("\n\nOrder - "+ctr);
+            System.out.printf("\nName: "+name);
+            System.out.printf("\nAddress: "+address);
+            System.out.printf("\nCustomer type: ", customertype);
+            System.out.printf("\nType of Order: "+typeoforder);
+            System.out.printf("\nPizza Size: "+pizzasize);
+            System.out.printf("\nPizza Flavor: "+pizzaflavor);
+            System.out.printf("\nCrust: "+pizzacrust);
+            
+            System.out.printf("\n\tPrice: "+dPrice);
+            System.out.printf("\nSub-Total: "+dSub);
+            System.out.print("\nCharges: ");
+            System.out.printf("\n\tService Charge: "+dSCharge);
+            System.out.printf("\n\tDelivery Charge: "+dDelivery);
+            System.out.printf("\nVAT: "+dVat);
+            System.out.printf("\nDiscount: "+dDiscount);
+            System.out.printf("\nTotal Cost: "+dTotal);
+            
+           
+            }
+            
+            if(ask.equals("total"))
+            {
+                 dOver = dOver + dTotal;
+                System.out.print("\n\n\t\tOverall sales!");
+                System.out.printf("\nTotal Orders: "+ctr);    
+                System.out.printf("\nTotal Sales: "+dOver);
+                System.out.print("\n");
+             
+            }
+           else if(ask.contains("stop"))
+            {
+                System.exit(0);
+            }
+            
+            }
+    }
+    
+}
